@@ -7,33 +7,35 @@ while True:
     print("3. Update Task")
     print("4. Delete Task")
     print("5. Exit")
+    print('')
 
     choice = input("Enter your choice (1-5): ")
 
-    if choice == "1":
-        task = input("Enter your task: ")
+    match choice:
+        case "1":
+            task = input("Enter your task: ")
 
-        if task.strip() == "":
-            print("Task cannot be empty.")
-        else:
-            tasks.append(task)
-            print(f"Task '{task}' added successfully!")
+            if task.strip() == "":
+                print("Task cannot be empty.")
+            else:
+                tasks.append(task)
+                print(f"Task '{task}' added successfully!")
 
-    elif choice == "2":
-        if len(tasks) == 0:
-            print("Your task list is empty.")
-        else:
-            print("\n--- YOUR TASKS ---")
-            for index, task in enumerate(tasks, start=1):
-                print(f"{index}. {task}")
+        case "2":
+            if len(tasks) == 0:
+                print("Your task list is empty.")
+            else:
+                print("\n--- YOUR TASKS ---")
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")
 
-    elif choice == "3":
-        if len(tasks) == 0:
-            print("Your task list is empty. Add a task first.")
-        else:
-            print("\n--- YOUR TASKS ---")
-            for index, task in enumerate(tasks, start=1):
-                print(f"{index}. {task}")
+        case "3":
+            if len(tasks) == 0:
+                print("Your task list is empty. Add a task first.")
+            else:
+                print("\n--- YOUR TASKS ---")
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")
 
             try:
                 task_number = int(input("Enter task number to update: "))
@@ -52,29 +54,29 @@ while True:
             except ValueError:
                 print("Please enter numbers only.")
 
-    elif choice == "4":
-        if len(tasks) == 0:
-            print("Your task list is empty. Nothing to delete.")
-        else:
-            print("\n--- YOUR TASKS ---")
-            for index, task in enumerate(tasks, start=1):
-                print(f"{index}. {task}")
+        case "4":
+            if len(tasks) == 0:
+                print("Your task list is empty. Nothing to delete.")
+            else:
+                print("\n--- YOUR TASKS ---")
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")
 
-            try:
-                task_number = int(input("Enter task number to delete: "))
+                try:
+                    task_number = int(input("Enter task number to delete: "))
 
-                if 1 <= task_number <= len(tasks):
-                    deleted_task = tasks.pop(task_number - 1)
-                    print(f"Task deleted successfully: {deleted_task}")
-                else:
-                    print("Invalid task number.")
+                    if 1 <= task_number <= len(tasks):
+                        deleted_task = tasks.pop(task_number - 1)
+                        print(f"Task deleted successfully: {deleted_task}")
+                    else:
+                        print("Invalid task number.")
 
-            except ValueError:
-                print("Please enter numbers only.")
+                except ValueError:
+                    print("Please enter numbers only.")
 
-    elif choice == "5":
-        print("Thank you! Program closed.")
-        break
+        case "5":
+            print("Thank you! Program closed.")
+            break
 
-    else:
-        print("Invalid choice. Please enter a number from 1 to 5.")
+        case _:
+            print("Invalid choice. Please enter a number from 1 to 5.")
