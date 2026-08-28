@@ -1,2 +1,2 @@
 # CODSOFT_PYTHON
-Python Programming Internship tasks completed for CodSoft.
+Python Programming Internship tasks for CodSoft.
